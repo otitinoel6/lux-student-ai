@@ -1,3 +1,4 @@
+//========ROUTES(CONNECTIONS)====
 import { BrowserRouter as Router, Routes, Route } from "react-router";
 import { AuthProvider } from "@getmocha/users-service/react";
 import HomePage from "@/react-app/pages/Home";
@@ -23,3 +24,4 @@ export default function App() {
     </AuthProvider>
   );
 }
+//=================BY OTITI NOEL OCHIENG========

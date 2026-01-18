@@ -4,18 +4,25 @@ import react from "@vitejs/plugin-react";
 import { cloudflare } from "@cloudflare/vite-plugin";
 import { mochaPlugins } from "@getmocha/vite-plugins";
 
+const isVercel = process.env.VERCEL === "1";
+
 export default defineConfig({
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  plugins: [...mochaPlugins(process.env as any), react(), cloudflare()],
-  server: {
-    allowedHosts: true,
-  },
+  plugins: [
+    ...mochaPlugins(process.env as any),
+    react(),
+    !isVercel && cloudflare(), // ⬅️ disable on Vercel
+  ].filter(Boolean),
+
   build: {
+    outDir: "dist", // ⬅️ force correct output
     chunkSizeWarningLimit: 5000,
   },
+
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
   },
 });
+
+

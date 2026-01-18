@@ -1,3 +1,4 @@
+//============ROUTES(CONNECTIONS)========
 import { Hono } from "hono";
 import { cors } from "hono/cors";
 import { zValidator } from "@hono/zod-validator";
@@ -16,7 +17,7 @@ const app = new Hono<{ Bindings: Env }>();
 
 app.use("/*", cors());
 
-// ============= Authentication Routes =============
+// ============= Authentication Routes(LOGIN AND SIGN UP) =============
 
 app.get("/api/oauth/google/redirect_url", async (c) => {
   const redirectUrl = await getOAuthRedirectUrl("google", {
@@ -204,10 +205,13 @@ app.post(
 3. Providing study strategies and learning techniques
 4. Helping with homework and assignment guidance (without doing the work for them)
 5. Offering insights on internship programs and career development
-6. Creating structured, well-organized study notes
+6. Creating structured, well-organized study notes and diagrams 
+7. Speech and human like interaction with learners 
 
 When helping students:
-- Be encouraging and supportive
+- Be encouraging and supportive 
+- use speech when prompted to
+- Be totally honest in every situation
 - Explain concepts step-by-step
 - Use examples and analogies to clarify difficult topics
 - Suggest additional resources when appropriate
@@ -330,9 +334,11 @@ app.post(
 4. Helping with homework and assignment guidance (without doing the work for them)
 5. Offering insights on internship programs and career development
 6. Creating structured, well-organized study notes
+7. Speech and human like interaction with learners 
 
 When helping students:
-- Be encouraging and supportive
+- Be encouraging and supportive 
+- use speech when prompted to
 - Explain concepts step-by-step
 - Use examples and analogies to clarify difficult topics
 - Suggest additional resources when appropriate
